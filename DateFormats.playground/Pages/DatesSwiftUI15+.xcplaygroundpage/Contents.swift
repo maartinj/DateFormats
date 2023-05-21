@@ -25,20 +25,39 @@ struct ContentView: View {
         Form {
             Text("**SwiftUI iOS 15+**").font(.title)
             LabeledContent("Using format: .dateTime") {
-                
+                Text(currentDateAndTime, format: .dateTime)
             }
             LabeledContent("Using format: .dateTime +") {
-
+                Text(currentDateAndTime, format: .dateTime
+                    .weekday()
+                    .month()
+                    .day()
+                    .year()
+                    .week()
+                    .hour()
+                    .minute()
+                    .second()
+                )
             }
             LabeledContent("Using format: .dateTime + compontent options") {
-
+                Text(currentDateAndTime, format: .dateTime
+                    .weekday(.wide)
+                    .month(.wide)
+                    .day(.twoDigits)
+                    .year()
+                    .hour()
+                    .minute()
+                )
             }
             LabeledContent("Using format: special cases") {
-
+                Text(currentDateAndTime, format: .dateTime
+                    .week(.weekOfMonth)
+                    .day(.ordinalOfDayInMonth)
+                )
             }
             
             LabeledContent("Using format: Date.FormatStyle") {
-
+                Text(currentDateAndTime, format: Date.FormatStyle(date: .complete, time: .none))
             }
 
         }
